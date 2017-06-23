@@ -7,6 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateManager {
+    private static final String CONFIG_FILE_LOCATION = "hibernate.cfg.xml";
     private SessionFactory sessionFactory;
     private Session session;
     private Transaction transaction;
@@ -18,8 +19,10 @@ public class HibernateManager {
     private void initSessionFactory() {
         // Hibernate 5.
         // TODO Exceptions
-        sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build())
-                .getMetadataBuilder().build().getSessionFactoryBuilder().build();
+        sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder()
+                    .configure(CONFIG_FILE_LOCATION).build())
+                .getMetadataBuilder().build()
+                .getSessionFactoryBuilder().build();
     }
 
     private void initSession() {
