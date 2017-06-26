@@ -7,7 +7,8 @@
 	<artifactId>iot17</artifactId>
 	<version>1.0</version>
 
-	<packaging>jar</packaging>
+<!-- 	<packaging>jar</packaging> -->
+	<packaging>war</packaging>
 
 	<name>iot17</name>
 	<url>http://maven.apache.org</url>
@@ -52,6 +53,19 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>${org.mockito.version}</version>
+		</dependency>
+		<!-- - - - Logger - - - -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.18</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.18</version>
+			<scope>runtime</scope>
 		</dependency>
 		<!-- - - - DBConnect - - - -->
 		<dependency>
@@ -116,6 +130,33 @@
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
+		<!-- - - - Spring - - - -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.3.1.RELEASE</version>
+			<!-- <version>4.2.5.RELEASE</version> -->
+			<!-- <version>4.1.6.RELEASE</version> -->
+		</dependency>
+		<!-- spring-orm include spring-tx <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-tx</artifactId> <version>4.1.6.RELEASE</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.1.RELEASE</version>
+			<!-- <version>4.2.5.RELEASE</version> -->
+			<!-- <version>4.1.6.RELEASE</version> -->
+		</dependency>
+		<!-- spring-webmvc include spring-context <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-context</artifactId> <version>4.1.6.RELEASE</version> 
+			</dependency> -->
+		<!-- spring-webmvc include spring-web <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-web</artifactId> <version>4.1.6.RELEASE</version> </dependency> -->
+		<!-- - - - ByteCodeAssist - - - -->
+		<!-- hibernate-core include javassist 3.18.1-GA <dependency> <groupId>javassist</groupId> 
+			<artifactId>javassist</artifactId> <version>3.12.1.GA</version> </dependency> -->
+		<!-- <dependency> <groupId>org.javassist</groupId> <artifactId>javassist</artifactId> 
+			<version>3.20.0-GA</version> <type>bundle</type> </dependency> -->
 	</dependencies>
 
 	<build>
@@ -162,6 +203,17 @@
 					<reportsDirectory>${testng.reports.directory}</reportsDirectory>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<!-- <warSourceDirectory>WebContent</warSourceDirectory> <failOnMissingWebXml>false</failOnMissingWebXml> 
+						<packagingExcludes>WEB-INF/web.xml</packagingExcludes> -->
+					<warName>iot17</warName>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
